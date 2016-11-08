@@ -12,6 +12,8 @@ public class DriverDao extends GeneralDao<Driver> {
 	}
 	
 	public Driver findByDni(String dni) throws HibernateException {
+		
+		System.out.println("");
 		Driver driver = null;
         try {
             startOperation();
