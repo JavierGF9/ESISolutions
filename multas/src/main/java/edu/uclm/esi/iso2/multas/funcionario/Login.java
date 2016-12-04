@@ -22,4 +22,7 @@ public class Login {
 		return existe;
 	}
 	
+	public String getUsuario(){
+		return usuario;
+	}
 }
