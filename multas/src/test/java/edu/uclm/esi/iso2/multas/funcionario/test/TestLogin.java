@@ -12,5 +12,6 @@ public class TestLogin {
 	public void comprobarUser(){
 		Login login = new Login("esi", "esi");
 		assertTrue(login.validarLogin() == true);
+		
 	}
 }
