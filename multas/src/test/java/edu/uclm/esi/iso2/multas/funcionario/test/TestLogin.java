@@ -1,20 +1,16 @@
 package edu.uclm.esi.iso2.multas.funcionario.test;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 import edu.uclm.esi.iso2.multas.funcionario.*;
 
 public class TestLogin {
 
-	
-	public boolean comprobarUser(Login login){
-		boolean comprobar=false;
-		if(login.getUsuario()=="esi"){
-			comprobar=true;
-		}
-		return comprobar;
+	@Test
+	public void comprobarUser(){
+		Login login = new Login("esi", "esi");
+		assertTrue(login.validarLogin() == true);
 	}
-	
-	
 }
