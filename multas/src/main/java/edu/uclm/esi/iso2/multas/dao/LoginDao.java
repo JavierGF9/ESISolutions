@@ -28,8 +28,8 @@ public class LoginDao {
 		String usuario = null;
         try {
             startOperation();
-            Query query=session.createQuery("user from Login where user=? and ");
-            query.setParameter(1, user);
+            Query query=session.createQuery("select user from Login where user=\"" + user + "\";");
+            query.setParameter(1, usuario);
             usuario = (String) query.getSingleResult();
             transaction.commit();
         } catch (HibernateException e) {
