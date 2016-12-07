@@ -9,7 +9,7 @@ public class VehicleDao extends GeneralDao<Vehicle> {
 	public VehicleDao() {
 		super();
 	}
-	
+
 	public Vehicle findByLicense(String license) throws HibernateException {
 		Vehicle vehicle = null;
         try {

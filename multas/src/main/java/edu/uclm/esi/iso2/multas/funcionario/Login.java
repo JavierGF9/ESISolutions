@@ -1,25 +1,35 @@
 package edu.uclm.esi.iso2.multas.funcionario;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-import edu.uclm.esi.iso2.multas.dao.LoginDao;
-
-
+@Entity
+@Table
 public class Login {
-	protected LoginDao logindao;
-	protected String usuario;
-	protected String contrasena;
+	@Id
+	@Column(length=255, nullable=false)
+	private String user;
+	@Column(length=255, nullable=false)
+	private String pass;
 	
-	public Login(String usuario, String contrasena){
-		this.usuario=usuario;
-		this.contrasena=contrasena;
+	public Login() {
 	}
 	
-	public boolean validarLogin(){
-		boolean existe=false;
-			if((usuario==logindao.findByUser(usuario)) && (contrasena==logindao.findByPass(contrasena))){
-				existe=true;
-			}
-		return existe;
+	public Login(String user) {
+		this();
+		this.user = user;
 	}
 	
+	public String getPass() {
+		return pass;
+	}
+	
+	public boolean validarLogin(String pass) {
+		if (pass.equals(pass))
+			return true;
+		
+		return false;
+	}
 }

@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="vehicle")
 public class Vehicle {
 	@Id
 	private String license;
