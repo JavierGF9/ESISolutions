@@ -11,14 +11,9 @@ import javax.persistence.Query;
 
 public class LoginDao {
 	
-	 protected Session session;
-	    protected Transaction transaction;
+	protected Session session;
+	protected Transaction transaction;
 
-	    public LoginDao() {
-	    	// Si quitamos el comentario a la línea siguiente, la base de datos se vaciará.
-	        // HibernateFactory.buildIfNeeded();
-	    }
-	
 	protected void startOperation() throws HibernateException {
         session = HibernateFactory.openSession();
         transaction = session.beginTransaction();
