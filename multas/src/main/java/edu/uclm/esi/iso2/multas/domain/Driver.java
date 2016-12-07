@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="driver")
 public class Driver extends SanctionHolder {
-	@Column
+	@Column(name="points")
 	private int points;
 	
 	public Driver() {
