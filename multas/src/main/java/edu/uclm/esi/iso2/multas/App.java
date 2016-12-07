@@ -6,7 +6,7 @@ import edu.uclm.esi.iso2.multas.persistencia.HibernateUtils;
 
 /**
  * Hello world!
- *
+ 
  */
 public class App {
 	private static Session session;
@@ -14,6 +14,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		session=HibernateUtils.getSessionFactory().openSession();
+		
 		
 		
 	}
