@@ -27,9 +27,7 @@ public class App {
 
 		sessFact.close();
 		
-		
-
-		System.out.println("Hibernateeeeeeeeeeeeeee");
+	
 	
 
 		
