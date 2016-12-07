@@ -11,10 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ButtonGroup;
 
 public class MenuFuncionarioInterface {
 
 	private JFrame frameMenu;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton btnEncenderRadar;
 
 	/**
 	 * Launch the application.
@@ -37,6 +40,8 @@ public class MenuFuncionarioInterface {
 	 */
 	public MenuFuncionarioInterface() {
 		initialize();
+		
+		
 	}
 
 	/**
@@ -49,21 +54,42 @@ public class MenuFuncionarioInterface {
 		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frameMenu.getContentPane().setLayout(null);
 		
-		JButton btnEncenderRadar = new JButton("Encender Radar");
+		btnEncenderRadar = new JButton("Encender Radar");
+		btnEncenderRadar.setEnabled(false);
 		btnEncenderRadar.setBounds(27, 23, 188, 89);
 		frameMenu.getContentPane().add(btnEncenderRadar);
 		
 		JRadioButton rdbtnUrbano = new JRadioButton("Urbano");
+		rdbtnUrbano.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnEncenderRadar.setEnabled(true);
+			}
+		});
+		buttonGroup.add(rdbtnUrbano);
 		rdbtnUrbano.setBounds(238, 23, 149, 23);
 		frameMenu.getContentPane().add(rdbtnUrbano);
 		
 		JRadioButton rdbtnCarretera = new JRadioButton("Carretera Nacional");
+		rdbtnCarretera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnEncenderRadar.setEnabled(true);
+			}
+		});
+		buttonGroup.add(rdbtnCarretera);
 		rdbtnCarretera.setBounds(238, 56, 168, 23);
 		frameMenu.getContentPane().add(rdbtnCarretera);
 		
 		JRadioButton rdbtnAutovia = new JRadioButton("Autovía");
+		rdbtnAutovia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnEncenderRadar.setEnabled(true);
+			}
+		});
+		buttonGroup.add(rdbtnAutovia);
 		rdbtnAutovia.setBounds(238, 89, 149, 23);
 		frameMenu.getContentPane().add(rdbtnAutovia);
+				
+		
 		
 		JButton btnApagarRadar = new JButton("Apagar Radar");
 		btnApagarRadar.setBounds(414, 22, 157, 90);
@@ -80,12 +106,18 @@ public class MenuFuncionarioInterface {
 		JButton btnCambioPropietario = new JButton("Cambiar\nPropietario\n");
 		btnCambioPropietario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CambiarPropietarioInterface.main(null);
 			}
 		});
 		btnCambioPropietario.setBounds(238, 193, 155, 90);
 		frameMenu.getContentPane().add(btnCambioPropietario);
 		
 		JButton btnSancionar = new JButton("Sancionar \nConductor");
+		btnSancionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SancionarInterface.main(null);
+			}
+		});
 		btnSancionar.setBounds(414, 193, 155, 90);
 		frameMenu.getContentPane().add(btnSancionar);
 		

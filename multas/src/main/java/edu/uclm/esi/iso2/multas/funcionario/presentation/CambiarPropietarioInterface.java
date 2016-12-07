@@ -13,8 +13,12 @@ import java.awt.event.ActionEvent;
 public class CambiarPropietarioInterface {
 
 	private JFrame frmCambiarPropietario;
-	private JTextField txtFieldActual;
 	private JTextField txtFieldNuevo;
+	private JLabel lblActualPropietario;
+	private JButton btnCancelar;
+	private JButton btnConfirmar;
+	private JTextField txtFieldActual;
+	private JLabel lblNuevoPropietario;
 
 	/**
 	 * Launch the application.
@@ -49,11 +53,11 @@ public class CambiarPropietarioInterface {
 		frmCambiarPropietario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCambiarPropietario.getContentPane().setLayout(null);
 		
-		JLabel lblActualPropietario = new JLabel("Actual Propietario: ");
+		lblActualPropietario = new JLabel("Actual Propietario: ");
 		lblActualPropietario.setBounds(32, 47, 142, 15);
 		frmCambiarPropietario.getContentPane().add(lblActualPropietario);
 		
-		JLabel lblNuevoPropietario = new JLabel("Nuevo Propietario:");
+		lblNuevoPropietario = new JLabel("Nuevo Propietario:");
 		lblNuevoPropietario.setBounds(32, 86, 142, 15);
 		frmCambiarPropietario.getContentPane().add(lblNuevoPropietario);
 		
@@ -68,13 +72,18 @@ public class CambiarPropietarioInterface {
 		frmCambiarPropietario.getContentPane().add(txtFieldNuevo);
 		txtFieldNuevo.setColumns(10);
 		
-		JButton btnConfirmar = new JButton("Confirmar");
+		btnConfirmar = new JButton("Confirmar");
+		btnConfirmar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnConfirmar.setBounds(45, 157, 146, 44);
 		frmCambiarPropietario.getContentPane().add(btnConfirmar);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frmCambiarPropietario.dispose();
 			}
 		});
 		btnCancelar.setBounds(230, 157, 146, 44);

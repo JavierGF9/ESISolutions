@@ -9,10 +9,18 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 public class LoginInterface {
 
 	private JFrame framePrincipal;
+	private JLabel lblTitulo;
+	private JLabel lblUsuario;
+	private JLabel lblContrasea;
+	private JButton btnLogin;
+	private JButton btnExit;
 	private JTextField txtFieldUser;
 	private JTextField txtFieldPassword;
 
@@ -49,15 +57,15 @@ public class LoginInterface {
 		framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		framePrincipal.getContentPane().setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Bienvenido al programa de seguimiento DGT ");
+		lblTitulo = new JLabel("Bienvenido al programa de seguimiento DGT ");
 		lblTitulo.setBounds(55, 12, 332, 15);
 		framePrincipal.getContentPane().add(lblTitulo);
 		
-		JLabel lblUsuario = new JLabel("Usuario");
+		lblUsuario = new JLabel("Usuario");
 		lblUsuario.setBounds(55, 110, 70, 15);
 		framePrincipal.getContentPane().add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("Contraseña");
+		lblContrasea = new JLabel("Contraseña");
 		lblContrasea.setBounds(55, 153, 103, 15);
 		framePrincipal.getContentPane().add(lblContrasea);
 		
@@ -71,13 +79,28 @@ public class LoginInterface {
 		framePrincipal.getContentPane().add(txtFieldPassword);
 		txtFieldPassword.setColumns(10);
 		
-		JButton btnLogin = new JButton("Login");
+		btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if((txtFieldUser.getText().equals("007"))&&(txtFieldPassword.getText().equals("esi"))){
+					//MenuFuncionarioInterface frameMenu=new MenuFuncionarioInterface();
+					MenuFuncionarioInterface.main(null);
+				}
+			}
+		});
 		btnLogin.setBounds(55, 218, 117, 25);
 		framePrincipal.getContentPane().add(btnLogin);
 		
-		JButton btnExit = new JButton("Salir");
+		btnExit = new JButton("Salir");
+		btnExit.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				framePrincipal.dispose();
+			}
+		});
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 			}
 		});
 		btnExit.setBounds(242, 218, 117, 25);

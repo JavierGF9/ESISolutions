@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SancionarInterface {
 
@@ -104,6 +106,11 @@ public class SancionarInterface {
 		frmSancionarConductor.getContentPane().add(btnSancionar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmSancionarConductor.dispose();
+			}
+		});
 		btnCancelar.setBounds(220, 215, 117, 25);
 		frmSancionarConductor.getContentPane().add(btnCancelar);
 	}
