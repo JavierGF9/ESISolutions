@@ -12,12 +12,19 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MenuFuncionarioInterface {
 
 	private JFrame frameMenu;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JButton btnEncenderRadar;
+	private JButton btnApagarRadar;
+	private JButton btnCambioPropietario;
+	private JButton btnSancionar;
+	private JButton btnPagoSan;
+	private JList listInfractores;
 
 	/**
 	 * Launch the application.
@@ -55,6 +62,17 @@ public class MenuFuncionarioInterface {
 		frameMenu.getContentPane().setLayout(null);
 		
 		btnEncenderRadar = new JButton("Encender Radar");
+		btnEncenderRadar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnApagarRadar.setEnabled(true);
+				listInfractores.setEnabled(true);
+				btnCambioPropietario.setEnabled(true);
+				btnPagoSan.setEnabled(true);
+				btnSancionar.setEnabled(true);
+				btnEncenderRadar.setEnabled(false);
+			}
+		});
 		btnEncenderRadar.setEnabled(false);
 		btnEncenderRadar.setBounds(27, 23, 188, 89);
 		frameMenu.getContentPane().add(btnEncenderRadar);
@@ -91,11 +109,23 @@ public class MenuFuncionarioInterface {
 				
 		
 		
-		JButton btnApagarRadar = new JButton("Apagar Radar");
+		btnApagarRadar = new JButton("Apagar Radar");
+		btnApagarRadar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				listInfractores.setEnabled(false);
+				btnCambioPropietario.setEnabled(false);
+				btnPagoSan.setEnabled(false);
+				btnSancionar.setEnabled(false);
+				btnEncenderRadar.setEnabled(true);
+				btnApagarRadar.setEnabled(false);
+			}
+		});
+		btnApagarRadar.setEnabled(false);
 		btnApagarRadar.setBounds(414, 22, 157, 90);
 		frameMenu.getContentPane().add(btnApagarRadar);
 		
-		JList listInfractores = new JList();
+		listInfractores = new JList();
 		listInfractores.setBounds(27, 191, 188, 194);
 		frameMenu.getContentPane().add(listInfractores);
 		
@@ -103,7 +133,8 @@ public class MenuFuncionarioInterface {
 		lblNewLabel.setBounds(27, 164, 188, 15);
 		frameMenu.getContentPane().add(lblNewLabel);
 		
-		JButton btnCambioPropietario = new JButton("Cambiar\nPropietario\n");
+		btnCambioPropietario = new JButton("Cambiar\nPropietario\n");
+		btnCambioPropietario.setEnabled(false);
 		btnCambioPropietario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CambiarPropietarioInterface.main(null);
@@ -112,7 +143,8 @@ public class MenuFuncionarioInterface {
 		btnCambioPropietario.setBounds(238, 193, 155, 90);
 		frameMenu.getContentPane().add(btnCambioPropietario);
 		
-		JButton btnSancionar = new JButton("Sancionar \nConductor");
+		btnSancionar = new JButton("Sancionar \nConductor");
+		btnSancionar.setEnabled(false);
 		btnSancionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SancionarInterface.main(null);
@@ -121,7 +153,8 @@ public class MenuFuncionarioInterface {
 		btnSancionar.setBounds(414, 193, 155, 90);
 		frameMenu.getContentPane().add(btnSancionar);
 		
-		JButton btnPagoSan = new JButton("Pago Sanción");
+		btnPagoSan = new JButton("Pago Sanción");
+		btnPagoSan.setEnabled(false);
 		btnPagoSan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

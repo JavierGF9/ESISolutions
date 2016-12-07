@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -82,9 +83,11 @@ public class LoginInterface {
 		btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if((txtFieldUser.getText().equals("007"))&&(txtFieldPassword.getText().equals("esi"))){
+				if((txtFieldUser.getText().equals("esi"))&&(txtFieldPassword.getText().equals("esi"))){
 					//MenuFuncionarioInterface frameMenu=new MenuFuncionarioInterface();
 					MenuFuncionarioInterface.main(null);
+				}else{
+					JOptionPane.showMessageDialog(null,"Error, Usuario/Contraseña Incorrecta :-(");
 				}
 			}
 		});
