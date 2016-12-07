@@ -14,6 +14,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		session=HibernateUtils.getSessionFactory().openSession();
+		System.out.println("Hibernateeeeeeeeeeeeeee");
 		
 		
 		
