@@ -87,7 +87,7 @@ public class MenuFuncionarioInterface {
 				
 				btnApagarRadar.setEnabled(true);
 				listInfractores.setEnabled(true);
-				listInfractores.removeAll();
+				modelLista.removeAllElements();
 				btnEncenderRadar.setEnabled(false);
 				rdbtnUrbano.setEnabled(false);
 				rdbtnCarretera.setEnabled(false);
@@ -146,7 +146,6 @@ public class MenuFuncionarioInterface {
 		btnApagarRadar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				radar.apagarRadar();
 				btnCambioPropietario.setEnabled(false);
 				btnPagoSan.setEnabled(false);
 				btnSancionar.setEnabled(false);
