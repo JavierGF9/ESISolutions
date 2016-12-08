@@ -2,6 +2,7 @@ package edu.uclm.esi.iso2.multas.funcionario.presentation;
 import edu.uclm.esi.iso2.multas.domain.*;
 import edu.uclm.esi.iso2.multas.dao.*;
 import java.awt.EventQueue;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -16,6 +17,8 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -34,6 +37,8 @@ public class MenuFuncionarioInterface {
 	private JButton btnSancionar;
 	private JButton btnPagoSan;
 	private JList listInfractores;
+	private DefaultListModel modeloLista;
+	private ArrayList<Inquiry> infracciones=new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -78,7 +83,13 @@ public class MenuFuncionarioInterface {
 				btnApagarRadar.setEnabled(true);
 				listInfractores.setEnabled(true);
 				btnEncenderRadar.setEnabled(false);
-
+				Radar radar=new Radar(carretera);
+				infracciones=radar.generarInfracciones();
+				if(infracciones.size()>0){
+					for(int i=0;i<infracciones.size();i++){
+					modeloLista.addElement(infracciones.get(i));
+					}
+				}
 			}
 		});
 		btnEncenderRadar.setEnabled(false);
@@ -175,16 +186,8 @@ public class MenuFuncionarioInterface {
 		frameMenu.getContentPane().add(scrollPane);
 		
 		listInfractores = new JList();
-		listInfractores.setModel(new AbstractListModel() {
-			
-			String[] values = new String[] {"1", "1", "1", "1", "2", "3", "3", "3", "4", "4", "4", "5"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
+		DefaultListModel modeloLista= new DefaultListModel();
+		listInfractores.setModel(modeloLista);
 		scrollPane.setViewportView(listInfractores);
 	}
 }
