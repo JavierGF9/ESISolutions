@@ -14,6 +14,17 @@ public class Radar {
 		this.tipoCarretera = tipoCarretera;
 	}
 	
+	
+	public Carretera getTipoCarretera() {
+		return tipoCarretera;
+	}
+
+
+	public void setTipoCarretera(Carretera tipoCarretera) {
+		this.tipoCarretera = tipoCarretera;
+	}
+
+
 	public void apagarRadar() {
 		encendido = false;
 	}
@@ -74,4 +85,5 @@ public class Radar {
 			return 120;
 		}
 	}
+	
 }

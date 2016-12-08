@@ -39,6 +39,7 @@ public class MenuFuncionarioInterface {
 	private ArrayList<Inquiry> sanciones=new ArrayList<>();
 	private DefaultListModel modelLista =new DefaultListModel();
 	private ArrayList<Inquiry> infrancciones;
+	private Radar radar;
 	
 
 	/**
@@ -90,8 +91,7 @@ public class MenuFuncionarioInterface {
 				btnEncenderRadar.setEnabled(false);
 				rdbtnUrbano.setEnabled(false);
 				rdbtnCarretera.setEnabled(false);
-				rdbtnAutovia.setEnabled(false);
-				Radar radar = new Radar(carretera);
+				radar.setTipoCarretera(carretera);
 				radar.encenderRadar();
 				sanciones=radar.generarInfracciones();
 				for(int i=0;i<sanciones.size();i++){
@@ -145,6 +145,7 @@ public class MenuFuncionarioInterface {
 		btnApagarRadar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				radar.apagarRadar();
 				btnCambioPropietario.setEnabled(false);
 				btnPagoSan.setEnabled(false);
 				btnSancionar.setEnabled(false);
@@ -153,6 +154,7 @@ public class MenuFuncionarioInterface {
 				rdbtnUrbano.setEnabled(true);
 				rdbtnCarretera.setEnabled(true);
 				rdbtnAutovia.setEnabled(true);
+				
 			}
 		});
 		btnApagarRadar.setEnabled(false);
