@@ -38,7 +38,6 @@ public class MenuFuncionarioInterface {
 	private JRadioButton rdbtnAutovia;
 	private ArrayList<Inquiry> sanciones=new ArrayList<>();
 	private DefaultListModel modelLista =new DefaultListModel();
-	private ArrayList<Inquiry> infrancciones;
 	private Radar radar;
 	
 
@@ -91,11 +90,11 @@ public class MenuFuncionarioInterface {
 				btnEncenderRadar.setEnabled(false);
 				rdbtnUrbano.setEnabled(false);
 				rdbtnCarretera.setEnabled(false);
-				radar.setTipoCarretera(carretera);
+				Radar radar=new Radar(carretera);
 				radar.encenderRadar();
 				sanciones=radar.generarInfracciones();
 				for(int i=0;i<sanciones.size();i++){
-					modelLista.addElement(sanciones.get(i).getOwner().getName()+" "+sanciones.get(i).getOwner().getLastName());
+					modelLista.addElement("Matricula: "+sanciones.get(i).getLicense() +" Nombre: "+sanciones.get(i).getOwner().getName()+" "+sanciones.get(i).getOwner().getLastName());
 					
 				}
 				

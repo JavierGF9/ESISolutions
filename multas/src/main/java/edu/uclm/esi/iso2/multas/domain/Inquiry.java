@@ -21,8 +21,8 @@ import edu.uclm.esi.iso2.multas.dao.OwnerDao;
 @Table
 public class Inquiry {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	private String license;
 	@Column(nullable=false, updatable=false)
 	private Date dateOfIssue;
 	@Column(nullable=false, updatable=false)
@@ -42,18 +42,21 @@ public class Inquiry {
 	
 	public Inquiry(String license, double speed, String location, double maxSpeed) {
 		this();
+		
 		this.dateOfIssue=new Date(System.currentTimeMillis());
 		this.speed=speed;
 		this.maxSpeed=maxSpeed;
 		this.location=location;
 		this.owner=findOwner(license);
+		this.license=license;
 	}
 
 	private Owner findOwner(String license) {
 		OwnerDao dao=new OwnerDao();
 		return dao.findByLicense(license);
 	}
-
+	
+	
 	public Sanction createSanctionFor(String dni) {
 		int points=calculatePoints();
 		int amount=calculateAmount();
@@ -67,6 +70,10 @@ public class Inquiry {
 		daoSanction.insert(sanction);
 		return sanction;
 	}
+	public String getLicense(){
+		return license;
+	}
+	
 
 	public int getId() {
 		return id;
@@ -202,6 +209,8 @@ public class Inquiry {
 		return 0;
 	}
 
+
+
 	private int calculateAmount() {
 		if (maxSpeed==30) {
 			if (speed>=31 && speed<=50) 
@@ -303,5 +312,11 @@ public class Inquiry {
 			else return 600;
 		}
 		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Inquiry [id=" + id + ", license=" + license + ", dateOfIssue=" + dateOfIssue + ", location=" + location
+				+ ", owner=" + owner + ", speed=" + speed + ", maxSpeed=" + maxSpeed + ", sanction=" + sanction + "]";
 	}
 }

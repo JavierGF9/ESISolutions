@@ -48,6 +48,7 @@ public class Radar {
 			id += String.valueOf((int) (Math.random() * 9));
 			id += String.valueOf((int) (Math.random() * 9));
 			
+			
 			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
 				velocidad = 15 + (int) (Math.random() * 55);
