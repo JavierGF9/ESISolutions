@@ -34,7 +34,8 @@ public class App {
 		List<Driver> conductores = null;
 		DriverDao driverdao = new DriverDao();
 		conductores=driverdao.findAll(Driver.class);
-		System.out.println(conductores.get(2).getName());
+		System.out.println("Primer conductor Dni "+conductores.get(1).getDni()+" Nombre "+conductores.get(1).getName());
+		
 		
 	
 		}
