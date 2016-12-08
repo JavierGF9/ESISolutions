@@ -100,6 +100,7 @@ public class MenuFuncionarioInterface {
 		rdbtnUrbano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
+				carretera=carretera.URBANA;
 			}
 		});
 		buttonGroup.add(rdbtnUrbano);
@@ -110,6 +111,7 @@ public class MenuFuncionarioInterface {
 		rdbtnCarretera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
+				carretera=carretera.NACIONAL;
 			}
 		});
 		buttonGroup.add(rdbtnCarretera);
@@ -120,6 +122,7 @@ public class MenuFuncionarioInterface {
 		rdbtnAutovia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
+				carretera=carretera.AUTOVIA;
 			}
 		});
 		buttonGroup.add(rdbtnAutovia);
