@@ -30,14 +30,17 @@ public class Radar {
 		// Si está apagado no hace nada
 		if (!encendido) return listaInfracciones;
 		
-		int numGenerados = 1 + generador.nextInt() % 20;
+		int numGenerados = 1 + generador.nextInt() % 200;
 		
 		for (int i = 0; i < numGenerados; i++) {
 			String id = new String();
+			id = String.valueOf(1 + generador.nextInt() % 1000);
+			/*
 			id += String.valueOf(generador.nextInt() % 3);
 			id += String.valueOf(generador.nextInt() % 10);
 			id += String.valueOf(generador.nextInt() % 10);
 			id += String.valueOf(generador.nextInt() % 10);
+			*/
 			
 			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
