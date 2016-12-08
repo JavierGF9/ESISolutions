@@ -34,9 +34,10 @@ public class Radar {
 		
 		for (int i = 0; i < numGenerados; i++) {
 			String id = new String();
-			for (int j = 0; j < 4; j++) {
-				id += String.valueOf(generador.nextInt() % 10);
-			}
+			id += String.valueOf(generador.nextInt() % 3);
+			id += String.valueOf(generador.nextInt() % 10);
+			id += String.valueOf(generador.nextInt() % 10);
+			id += String.valueOf(generador.nextInt() % 10);
 			
 			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
