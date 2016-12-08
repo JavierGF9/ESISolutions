@@ -1,7 +1,6 @@
 package edu.uclm.esi.iso2.multas.radar;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import edu.uclm.esi.iso2.multas.domain.Inquiry;
 
@@ -25,31 +24,26 @@ public class Radar {
 	
 	public ArrayList<Inquiry> generarInfracciones() {
 		ArrayList<Inquiry> listaInfracciones = new ArrayList<Inquiry>();
-		Random generador = new Random(System.currentTimeMillis());
 		
 		// Si está apagado no hace nada
 		if (!encendido) return listaInfracciones;
 		
-		int numGenerados = 1 + generador.nextInt() % 200;
+		int numGenerados = 1 + (int) (Math.random() * 50);
 		
 		for (int i = 0; i < numGenerados; i++) {
 			String id = new String();
-			id = String.valueOf(1 + generador.nextInt() % 1000);
-			/*
-			id += String.valueOf(generador.nextInt() % 3);
-			id += String.valueOf(generador.nextInt() % 10);
-			id += String.valueOf(generador.nextInt() % 10);
-			id += String.valueOf(generador.nextInt() % 10);
-			*/
+			id = String.valueOf(1 + (int) (Math.random() * 999));
 			
 			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
-				velocidad = 15 + generador.nextInt() % 56;
+				velocidad = 15 + (int) (Math.random() * 55);
 			} else if (tipoCarretera == Carretera.NACIONAL) {
-				velocidad = 60 + generador.nextInt() % 171;
+				velocidad = 60 + (int) (Math.random() * 170);
 			} else {
-				velocidad = 80 + generador.nextInt() % 161;
+				velocidad = 80 + (int) (Math.random() * 160);
 			}
+			
+			System.out.printf("%s %d %s %d\n", id, velocidad, tipoCarretera.name(), getMaxVelocidad());
 			
 			if (esInfraccion(velocidad)) {
 				listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), getMaxVelocidad()));
@@ -61,7 +55,7 @@ public class Radar {
 	
 	private boolean esInfraccion(int velocidad) {
 		if (tipoCarretera == Carretera.URBANA) {
-			if (velocidad > 60) return true;
+			if (velocidad > 50) return true;
 		} else if (tipoCarretera == Carretera.NACIONAL) {
 			if (velocidad > 100) return true;
 		} else {
