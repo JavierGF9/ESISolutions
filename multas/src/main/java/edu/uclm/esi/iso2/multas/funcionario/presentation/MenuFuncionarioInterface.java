@@ -14,9 +14,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import edu.uclm.esi.iso2.multas.radar.*;
 public class MenuFuncionarioInterface {
-
+	private Carretera carretera;
 	private JFrame frameMenu;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JButton btnEncenderRadar;
@@ -55,6 +55,7 @@ public class MenuFuncionarioInterface {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frameMenu = new JFrame();
 		frameMenu.setTitle("Menú Principal DGT");
 		frameMenu.setBounds(100, 100, 585, 440);

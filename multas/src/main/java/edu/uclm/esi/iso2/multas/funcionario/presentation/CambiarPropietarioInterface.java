@@ -6,12 +6,26 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.status.StatusLogger;
+import org.hibernate.Session;
+
+import edu.uclm.esi.iso2.multas.dao.DriverDao;
+import edu.uclm.esi.iso2.multas.dao.HibernateFactory;
+import edu.uclm.esi.iso2.multas.domain.Driver;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class CambiarPropietarioInterface {
 
+public class CambiarPropietarioInterface {
+	
+	static{
+		StatusLogger.getLogger().setLevel(Level.OFF);
+	}
 	private JFrame frmCambiarPropietario;
 	private JTextField txtFieldNuevo;
 	private JLabel lblActualPropietario;
@@ -66,6 +80,10 @@ public class CambiarPropietarioInterface {
 		txtFieldActual.setBounds(192, 45, 223, 19);
 		frmCambiarPropietario.getContentPane().add(txtFieldActual);
 		txtFieldActual.setColumns(10);
+		List<Driver> conductores = null;
+		DriverDao driverdao = new DriverDao();
+		conductores=driverdao.findAll(Driver.class);
+		txtFieldActual.setText(conductores.get(1).getName()+" "+conductores.get(1).getLastName());
 		
 		txtFieldNuevo = new JTextField();
 		txtFieldNuevo.setBounds(192, 84, 223, 19);

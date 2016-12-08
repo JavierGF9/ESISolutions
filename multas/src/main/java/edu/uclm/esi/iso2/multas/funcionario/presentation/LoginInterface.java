@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 
 public class LoginInterface {
 
-	private JFrame framePrincipal;
+	public static JFrame framePrincipal;
 	private JLabel lblTitulo;
 	private JLabel lblUsuario;
 	private JLabel lblContrasea;

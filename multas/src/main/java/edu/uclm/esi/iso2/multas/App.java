@@ -1,6 +1,6 @@
 package edu.uclm.esi.iso2.multas;
 
-
+import edu.uclm.esi.iso2.multas.funcionario.presentation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +30,15 @@ public class App {
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 		
-		
+		LoginInterface window=new LoginInterface();
+		window.framePrincipal.setVisible(true);
+		/*
 		List<Driver> conductores = null;
 		DriverDao driverdao = new DriverDao();
 		conductores=driverdao.findAll(Driver.class);
 		System.out.println("Primer conductor Dni "+conductores.get(1).getDni()+" Nombre "+conductores.get(1).getName());
 		
-		
+		*/
 	
 		}
 	
