@@ -1,19 +1,10 @@
 package edu.uclm.esi.iso2.multas.funcionario.presentation;
-import edu.uclm.esi.iso2.multas.domain.*;
-import edu.uclm.esi.iso2.multas.dao.*;
 import java.awt.EventQueue;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
-import javax.swing.JTextPane;
 import javax.swing.JList;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
@@ -21,11 +12,16 @@ import javax.swing.DefaultListModel;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import edu.uclm.esi.iso2.multas.dao.DriverDao;
+import edu.uclm.esi.iso2.multas.domain.Driver;
+import edu.uclm.esi.iso2.multas.domain.Inquiry;
 import edu.uclm.esi.iso2.multas.radar.*;
-import javax.swing.JScrollBar;
+
 import javax.swing.JScrollPane;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.AbstractListModel;
 public class MenuFuncionarioInterface {
 	private Carretera carretera;
@@ -37,8 +33,13 @@ public class MenuFuncionarioInterface {
 	private JButton btnSancionar;
 	private JButton btnPagoSan;
 	private JList listInfractores;
-	private DefaultListModel modeloLista;
-	private ArrayList<Inquiry> infracciones=new ArrayList<>();
+	private JRadioButton rdbtnUrbano;
+	private JRadioButton rdbtnCarretera;
+	private JRadioButton rdbtnAutovia;
+	private ArrayList<Inquiry> sanciones=new ArrayList<>();
+	private DefaultListModel modelLista =new DefaultListModel();
+	private ArrayList<Inquiry> infrancciones;
+	
 
 	/**
 	 * Launch the application.
@@ -78,25 +79,34 @@ public class MenuFuncionarioInterface {
 		
 		btnEncenderRadar = new JButton("Encender Radar");
 		btnEncenderRadar.addMouseListener(new MouseAdapter() {
+			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				btnApagarRadar.setEnabled(true);
 				listInfractores.setEnabled(true);
+				listInfractores.removeAll();
 				btnEncenderRadar.setEnabled(false);
-				Radar radar=new Radar(carretera);
-				infracciones=radar.generarInfracciones();
-				if(infracciones.size()>0){
-					for(int i=0;i<infracciones.size();i++){
-					modeloLista.addElement(infracciones.get(i));
-					}
+				rdbtnUrbano.setEnabled(false);
+				rdbtnCarretera.setEnabled(false);
+				rdbtnAutovia.setEnabled(false);
+				Radar radar = new Radar(carretera);
+				radar.encenderRadar();
+				sanciones=radar.generarInfracciones();
+				for(int i=0;i<sanciones.size();i++){
+					modelLista.addElement(sanciones.get(i).getOwner().getName()+" "+sanciones.get(i).getOwner().getLastName());
+					
 				}
+				
+
 			}
 		});
 		btnEncenderRadar.setEnabled(false);
 		btnEncenderRadar.setBounds(27, 23, 188, 89);
 		frameMenu.getContentPane().add(btnEncenderRadar);
 		
-		JRadioButton rdbtnUrbano = new JRadioButton("Urbano");
+		rdbtnUrbano = new JRadioButton("Urbano");
 		rdbtnUrbano.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
@@ -107,7 +117,7 @@ public class MenuFuncionarioInterface {
 		rdbtnUrbano.setBounds(238, 23, 149, 23);
 		frameMenu.getContentPane().add(rdbtnUrbano);
 		
-		JRadioButton rdbtnCarretera = new JRadioButton("Carretera Nacional");
+		rdbtnCarretera = new JRadioButton("Carretera Nacional");
 		rdbtnCarretera.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
@@ -118,7 +128,7 @@ public class MenuFuncionarioInterface {
 		rdbtnCarretera.setBounds(238, 56, 168, 23);
 		frameMenu.getContentPane().add(rdbtnCarretera);
 		
-		JRadioButton rdbtnAutovia = new JRadioButton("Autovía");
+		rdbtnAutovia = new JRadioButton("Autovía");
 		rdbtnAutovia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				btnEncenderRadar.setEnabled(true);
@@ -135,12 +145,14 @@ public class MenuFuncionarioInterface {
 		btnApagarRadar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				listInfractores.setEnabled(false);
 				btnCambioPropietario.setEnabled(false);
 				btnPagoSan.setEnabled(false);
 				btnSancionar.setEnabled(false);
 				btnEncenderRadar.setEnabled(true);
 				btnApagarRadar.setEnabled(false);
+				rdbtnUrbano.setEnabled(true);
+				rdbtnCarretera.setEnabled(true);
+				rdbtnAutovia.setEnabled(true);
 			}
 		});
 		btnApagarRadar.setEnabled(false);
@@ -189,8 +201,19 @@ public class MenuFuncionarioInterface {
 		frameMenu.getContentPane().add(scrollPane);
 		
 		listInfractores = new JList();
-		DefaultListModel modeloLista= new DefaultListModel();
-		listInfractores.setModel(modeloLista);
+		
+		listInfractores.setModel(modelLista);
+
+		listInfractores.setEnabled(false);
+		listInfractores.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				btnPagoSan.setEnabled(true);
+				btnSancionar.setEnabled(true);
+				btnCambioPropietario.setEnabled(true);
+			}
+		});
+	
+		
 		scrollPane.setViewportView(listInfractores);
 	}
 }
