@@ -67,9 +67,6 @@ public class MenuFuncionarioInterface {
 			public void mouseClicked(MouseEvent e) {
 				btnApagarRadar.setEnabled(true);
 				listInfractores.setEnabled(true);
-				btnCambioPropietario.setEnabled(true);
-				btnPagoSan.setEnabled(true);
-				btnSancionar.setEnabled(true);
 				btnEncenderRadar.setEnabled(false);
 			}
 		});
@@ -126,6 +123,14 @@ public class MenuFuncionarioInterface {
 		frameMenu.getContentPane().add(btnApagarRadar);
 		
 		listInfractores = new JList();
+		listInfractores.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				btnCambioPropietario.setEnabled(true);
+				btnPagoSan.setEnabled(true);
+				btnSancionar.setEnabled(true);
+			}
+		});
 		listInfractores.setBounds(27, 191, 188, 194);
 		frameMenu.getContentPane().add(listInfractores);
 		
