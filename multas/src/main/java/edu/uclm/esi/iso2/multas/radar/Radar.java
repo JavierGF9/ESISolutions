@@ -32,18 +32,19 @@ public class Radar {
 		
 		for (int i = 0; i < numGenerados; i++) {
 			String id = new String();
-			id = String.valueOf(1 + (int) (Math.random() * 999));
+			id += String.valueOf((int) (Math.random() * 2));
+			id += String.valueOf((int) (Math.random() * 9));
+			id += String.valueOf((int) (Math.random() * 9));
+			id += String.valueOf((int) (Math.random() * 9));
 			
 			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
 				velocidad = 15 + (int) (Math.random() * 55);
 			} else if (tipoCarretera == Carretera.NACIONAL) {
-				velocidad = 60 + (int) (Math.random() * 170);
+				velocidad = 60 + (int) (Math.random() * 70);
 			} else {
-				velocidad = 80 + (int) (Math.random() * 160);
+				velocidad = 80 + (int) (Math.random() * 80);
 			}
-			
-			System.out.printf("%s %d %s %d\n", id, velocidad, tipoCarretera.name(), getMaxVelocidad());
 			
 			if (esInfraccion(velocidad)) {
 				listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), getMaxVelocidad()));
