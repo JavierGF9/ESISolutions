@@ -9,6 +9,8 @@ public class Radar {
 	private boolean encendido;
 	private Carretera tipoCarretera;
 	
+	private final int[] VELOCIDADES = {30, 40, 60, 70, 80, 90, 100, 110, 120};
+	
 	public Radar(Carretera tipoCarretera) {
 		encendido = true;
 		this.tipoCarretera = tipoCarretera;
@@ -42,14 +44,16 @@ public class Radar {
 		int numGenerados = 1 + (int) (Math.random() * 50);
 		
 		for (int i = 0; i < numGenerados; i++) {
-			String id = new String();
+			String id;
+			int velocidad;
+			int velocidadMax;
+			
+			id = new String();
 			id += String.valueOf((int) (Math.random() * 2));
 			id += String.valueOf((int) (Math.random() * 9));
 			id += String.valueOf((int) (Math.random() * 9));
 			id += String.valueOf((int) (Math.random() * 9));
 			
-			
-			int velocidad;
 			if (tipoCarretera == Carretera.URBANA) {
 				velocidad = 15 + (int) (Math.random() * 55);
 			} else if (tipoCarretera == Carretera.NACIONAL) {
@@ -58,8 +62,16 @@ public class Radar {
 				velocidad = 80 + (int) (Math.random() * 80);
 			}
 			
+			if (tipoCarretera == Carretera.URBANA) {
+				velocidadMax = VELOCIDADES[(int) (Math.random())];
+			} else if (tipoCarretera == Carretera.NACIONAL) {
+				velocidadMax = VELOCIDADES[2 + (int) (Math.random() * 5)];
+			} else {
+				velocidadMax = VELOCIDADES[8];
+			}
+			
 			if (esInfraccion(velocidad)) {
-				listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), getMaxVelocidad()));
+				listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax));
 			}
 		}
 		
