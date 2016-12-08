@@ -7,6 +7,7 @@ import org.hibernate.Query;
 
 import java.util.List;
 
+
 public class GeneralDao<T> {
     protected Session session;
     protected Transaction transaction;

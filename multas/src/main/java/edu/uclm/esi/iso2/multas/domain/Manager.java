@@ -1,6 +1,5 @@
 package edu.uclm.esi.iso2.multas.domain;
 
-import edu.uclm.esi.iso2.multas.dao.DriverDao;
 import edu.uclm.esi.iso2.multas.dao.GeneralDao;
 import edu.uclm.esi.iso2.multas.dao.OwnerDao;
 import edu.uclm.esi.iso2.multas.dao.VehicleDao;
