@@ -189,12 +189,13 @@ public class MenuFuncionarioInterface {
 				String nombreSancionado = infracciones.get(index).getOwner().getName() + " "
 						+ infracciones.get(index).getOwner().getLastName();
 				String vehiculo = infracciones.get(index).getLicense();
+				String localizacion = infracciones.get(index).getLocation();
 				double velocidad = infracciones.get(index).getSpeed();
+				double velocidadMax = infracciones.get(index).getMaxSpeed();
 				double importe = sancion.getAmount();
 				int puntos = sancion.getPoints();
 
-				SancionarInterface ventanaCambio = new SancionarInterface(nombreSancionado, vehiculo, velocidad,
-						String.valueOf(importe), String.valueOf(puntos));
+				SancionarInterface ventanaCambio = new SancionarInterface(nombreSancionado, vehiculo, localizacion, velocidad, velocidadMax, importe, puntos);
 				ventanaCambio.frmSancionarConductor.setVisible(true);
 			}
 		});
