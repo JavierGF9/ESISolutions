@@ -1,7 +1,8 @@
 package edu.uclm.esi.iso2.multas.funcionario.presentation;
-
+import edu.uclm.esi.iso2.multas.domain.*;
+import edu.uclm.esi.iso2.multas.dao.*;
 import java.awt.EventQueue;
-
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -9,12 +10,20 @@ import javax.swing.JTextPane;
 import javax.swing.JList;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import edu.uclm.esi.iso2.multas.dao.DriverDao;
 import edu.uclm.esi.iso2.multas.radar.*;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.AbstractListModel;
 public class MenuFuncionarioInterface {
 	private Carretera carretera;
 	private JFrame frameMenu;
@@ -69,6 +78,7 @@ public class MenuFuncionarioInterface {
 				btnApagarRadar.setEnabled(true);
 				listInfractores.setEnabled(true);
 				btnEncenderRadar.setEnabled(false);
+
 			}
 		});
 		btnEncenderRadar.setEnabled(false);
@@ -123,18 +133,6 @@ public class MenuFuncionarioInterface {
 		btnApagarRadar.setBounds(414, 22, 157, 90);
 		frameMenu.getContentPane().add(btnApagarRadar);
 		
-		listInfractores = new JList();
-		listInfractores.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				btnCambioPropietario.setEnabled(true);
-				btnPagoSan.setEnabled(true);
-				btnSancionar.setEnabled(true);
-			}
-		});
-		listInfractores.setBounds(27, 191, 188, 194);
-		frameMenu.getContentPane().add(listInfractores);
-		
 		JLabel lblNewLabel = new JLabel("Infractores Detectados");
 		lblNewLabel.setBounds(27, 164, 188, 15);
 		frameMenu.getContentPane().add(lblNewLabel);
@@ -171,5 +169,22 @@ public class MenuFuncionarioInterface {
 		JLabel lblCaracteristicasMenu = new JLabel("Control de Mando Funcionario DGT");
 		lblCaracteristicasMenu.setBounds(286, 164, 263, 15);
 		frameMenu.getContentPane().add(lblCaracteristicasMenu);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(26, 206, 189, 173);
+		frameMenu.getContentPane().add(scrollPane);
+		
+		listInfractores = new JList();
+		listInfractores.setModel(new AbstractListModel() {
+			
+			String[] values = new String[] {"1", "1", "1", "1", "2", "3", "3", "3", "4", "4", "4", "5"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		scrollPane.setViewportView(listInfractores);
 	}
 }
