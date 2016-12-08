@@ -26,13 +26,14 @@ public class CambiarPropietarioInterface {
 	static{
 		StatusLogger.getLogger().setLevel(Level.OFF);
 	}
-	private JFrame frmCambiarPropietario;
+	public JFrame frmCambiarPropietario;
 	private JTextField txtFieldNuevo;
 	private JLabel lblActualPropietario;
 	private JButton btnCancelar;
 	private JButton btnConfirmar;
 	private JTextField txtFieldActual;
 	private JLabel lblNuevoPropietario;
+	private static String nombreCompleto;
 
 	/**
 	 * Launch the application.
@@ -41,7 +42,7 @@ public class CambiarPropietarioInterface {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CambiarPropietarioInterface window = new CambiarPropietarioInterface();
+					CambiarPropietarioInterface window = new CambiarPropietarioInterface(nombreCompleto);
 					window.frmCambiarPropietario.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +54,8 @@ public class CambiarPropietarioInterface {
 	/**
 	 * Create the application.
 	 */
-	public CambiarPropietarioInterface() {
+	public CambiarPropietarioInterface(String nombreCompleto) {
+		this.nombreCompleto=nombreCompleto;
 		initialize();
 	}
 
@@ -62,15 +64,16 @@ public class CambiarPropietarioInterface {
 	 */
 	private void initialize() {
 		frmCambiarPropietario = new JFrame();
+		frmCambiarPropietario.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmCambiarPropietario.setResizable(false);
 		frmCambiarPropietario.setTitle("Cambiar Propietario");
 		frmCambiarPropietario.setBounds(100, 100, 450, 300);
-		frmCambiarPropietario.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCambiarPropietario.getContentPane().setLayout(null);
 		
 		lblActualPropietario = new JLabel("Actual Propietario: ");
 		lblActualPropietario.setBounds(32, 47, 142, 15);
 		frmCambiarPropietario.getContentPane().add(lblActualPropietario);
-		
+
 		lblNuevoPropietario = new JLabel("Nuevo Propietario:");
 		lblNuevoPropietario.setBounds(32, 86, 142, 15);
 		frmCambiarPropietario.getContentPane().add(lblNuevoPropietario);
@@ -80,10 +83,7 @@ public class CambiarPropietarioInterface {
 		txtFieldActual.setBounds(192, 45, 223, 19);
 		frmCambiarPropietario.getContentPane().add(txtFieldActual);
 		txtFieldActual.setColumns(10);
-		List<Driver> conductores = null;
-		DriverDao driverdao = new DriverDao();
-		conductores=driverdao.findAll(Driver.class);
-		txtFieldActual.setText(conductores.get(1).getName()+" "+conductores.get(1).getLastName());
+		txtFieldActual.setText(nombreCompleto);
 		
 		txtFieldNuevo = new JTextField();
 		txtFieldNuevo.setBounds(192, 84, 223, 19);

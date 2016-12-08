@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 
 public class LoginInterface {
@@ -53,34 +56,13 @@ public class LoginInterface {
 	 */
 	private void initialize() {
 		framePrincipal = new JFrame();
+		framePrincipal.setResizable(false);
 		framePrincipal.setTitle("DGT by ESISolutions");
 		framePrincipal.setBounds(100, 100, 450, 300);
 		framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		framePrincipal.getContentPane().setLayout(null);
-		
-		lblTitulo = new JLabel("Bienvenido al programa de seguimiento DGT ");
-		lblTitulo.setBounds(55, 12, 332, 15);
-		framePrincipal.getContentPane().add(lblTitulo);
-		
-		lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(55, 110, 70, 15);
-		framePrincipal.getContentPane().add(lblUsuario);
-		
-		lblContrasea = new JLabel("Contraseña");
-		lblContrasea.setBounds(55, 153, 103, 15);
-		framePrincipal.getContentPane().add(lblContrasea);
-		
-		txtFieldUser = new JTextField();
-		txtFieldUser.setBounds(193, 108, 114, 19);
-		framePrincipal.getContentPane().add(txtFieldUser);
-		txtFieldUser.setColumns(10);
-		
-		txtFieldPassword = new JTextField();
-		txtFieldPassword.setBounds(193, 151, 114, 19);
-		framePrincipal.getContentPane().add(txtFieldPassword);
-		txtFieldPassword.setColumns(10);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.setBounds(55, 197, 112, 25);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if((txtFieldUser.getText().equals("esi"))&&(txtFieldPassword.getText().equals("esi"))){
@@ -91,10 +73,33 @@ public class LoginInterface {
 				}
 			}
 		});
-		btnLogin.setBounds(55, 218, 117, 25);
+		framePrincipal.getContentPane().setLayout(null);
+		
+		lblTitulo = new JLabel("Bienvenido al programa de seguimiento DGT ");
+		lblTitulo.setBounds(55, 0, 318, 15);
+		framePrincipal.getContentPane().add(lblTitulo);
+		
+		lblUsuario = new JLabel("Usuario");
+		lblUsuario.setBounds(55, 103, 55, 15);
+		framePrincipal.getContentPane().add(lblUsuario);
+		
+		txtFieldUser = new JTextField();
+		txtFieldUser.setBounds(172, 101, 114, 19);
+		framePrincipal.getContentPane().add(txtFieldUser);
+		txtFieldUser.setColumns(10);
+		
+		lblContrasea = new JLabel("Contraseña");
+		lblContrasea.setBounds(55, 127, 112, 15);
+		framePrincipal.getContentPane().add(lblContrasea);
+		
+		txtFieldPassword = new JTextField();
+		txtFieldPassword.setBounds(172, 125, 114, 19);
+		framePrincipal.getContentPane().add(txtFieldPassword);
+		txtFieldPassword.setColumns(10);
 		framePrincipal.getContentPane().add(btnLogin);
 		
 		btnExit = new JButton("Salir");
+		btnExit.setBounds(239, 197, 66, 25);
 		btnExit.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -106,7 +111,6 @@ public class LoginInterface {
 			
 			}
 		});
-		btnExit.setBounds(242, 218, 117, 25);
 		framePrincipal.getContentPane().add(btnExit);
 	}
 }

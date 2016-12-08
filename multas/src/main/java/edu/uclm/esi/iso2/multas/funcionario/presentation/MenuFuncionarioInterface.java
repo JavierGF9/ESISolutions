@@ -72,6 +72,7 @@ public class MenuFuncionarioInterface {
 	private void initialize() {
 		
 		frameMenu = new JFrame();
+		frameMenu.setResizable(false);
 		frameMenu.setTitle("Menú Principal DGT");
 		frameMenu.setBounds(100, 100, 585, 440);
 		frameMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,6 +91,7 @@ public class MenuFuncionarioInterface {
 				btnEncenderRadar.setEnabled(false);
 				rdbtnUrbano.setEnabled(false);
 				rdbtnCarretera.setEnabled(false);
+				rdbtnAutovia.setEnabled(false);
 				Radar radar=new Radar(carretera);
 				radar.encenderRadar();
 				sanciones=radar.generarInfracciones();
@@ -168,7 +170,12 @@ public class MenuFuncionarioInterface {
 		btnCambioPropietario.setEnabled(false);
 		btnCambioPropietario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CambiarPropietarioInterface.main(null);
+			int index=listInfractores.getSelectedIndex();
+			String cambioPropietario=sanciones.get(index).getOwner().getName()+" "+sanciones.get(index).getOwner().getLastName();
+			System.out.println(cambioPropietario);
+			CambiarPropietarioInterface ventanaCambio=new CambiarPropietarioInterface(cambioPropietario);
+			ventanaCambio.frmCambiarPropietario.setVisible(true);
+			
 			}
 		});
 		btnCambioPropietario.setBounds(238, 193, 155, 90);
@@ -178,7 +185,15 @@ public class MenuFuncionarioInterface {
 		btnSancionar.setEnabled(false);
 		btnSancionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SancionarInterface.main(null);
+				int index=listInfractores.getSelectedIndex();
+				String nombreSancionado=sanciones.get(index).getOwner().getName()+" "+sanciones.get(index).getOwner().getLastName();
+				String vehiculo=sanciones.get(index).getLicense();
+				double velocidad=sanciones.get(index).getSpeed();
+				String importe="IMPORTE FALTA";
+				String puntos="PUNTOS FALTA";
+
+				SancionarInterface ventanaCambio=new SancionarInterface(nombreSancionado,vehiculo,velocidad,importe,puntos);
+				ventanaCambio.frmSancionarConductor.setVisible(true);
 			}
 		});
 		btnSancionar.setBounds(414, 193, 155, 90);
@@ -188,6 +203,7 @@ public class MenuFuncionarioInterface {
 		btnPagoSan.setEnabled(false);
 		btnPagoSan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnPagoSan.setBounds(238, 295, 155, 90);
@@ -213,7 +229,7 @@ public class MenuFuncionarioInterface {
 				btnCambioPropietario.setEnabled(true);
 			}
 		});
-	
+		
 		
 		scrollPane.setViewportView(listInfractores);
 	}
