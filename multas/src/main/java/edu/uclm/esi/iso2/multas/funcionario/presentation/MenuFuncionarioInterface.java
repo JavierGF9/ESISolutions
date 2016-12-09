@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -98,14 +99,15 @@ public class MenuFuncionarioInterface {
 				for (int i = 0; i < infracciones.size(); i++) {
 					modelLista.addElement("Matricula: " + infracciones.get(i).getLicense() + " Nombre: "
 							+ infracciones.get(i).getOwner().getName() + " "
-							+ infracciones.get(i).getOwner().getLastName());
+							+ infracciones.get(i).getOwner().getLastName()+ " DNI:"
+							+ infracciones.get(i).getOwner().getDni());
 
 				}
 
 			}
 		});
 		btnEncenderRadar.setEnabled(false);
-		btnEncenderRadar.setBounds(27, 23, 188, 89);
+		btnEncenderRadar.setBounds(27, 23, 162, 89);
 		frameMenu.getContentPane().add(btnEncenderRadar);
 
 		rdbtnUrbano = new JRadioButton("Urbano");
@@ -116,7 +118,7 @@ public class MenuFuncionarioInterface {
 			}
 		});
 		buttonGroup.add(rdbtnUrbano);
-		rdbtnUrbano.setBounds(238, 23, 149, 23);
+		rdbtnUrbano.setBounds(222, 23, 149, 23);
 		frameMenu.getContentPane().add(rdbtnUrbano);
 
 		rdbtnCarretera = new JRadioButton("Carretera Nacional");
@@ -127,7 +129,7 @@ public class MenuFuncionarioInterface {
 			}
 		});
 		buttonGroup.add(rdbtnCarretera);
-		rdbtnCarretera.setBounds(238, 56, 168, 23);
+		rdbtnCarretera.setBounds(222, 56, 168, 23);
 		frameMenu.getContentPane().add(rdbtnCarretera);
 
 		rdbtnAutovia = new JRadioButton("Autovía");
@@ -138,7 +140,7 @@ public class MenuFuncionarioInterface {
 			}
 		});
 		buttonGroup.add(rdbtnAutovia);
-		rdbtnAutovia.setBounds(238, 89, 149, 23);
+		rdbtnAutovia.setBounds(222, 89, 149, 23);
 		frameMenu.getContentPane().add(rdbtnAutovia);
 
 		btnApagarRadar = new JButton("Apagar Radar");
@@ -157,11 +159,11 @@ public class MenuFuncionarioInterface {
 			}
 		});
 		btnApagarRadar.setEnabled(false);
-		btnApagarRadar.setBounds(414, 22, 157, 90);
+		btnApagarRadar.setBounds(409, 23, 162, 89);
 		frameMenu.getContentPane().add(btnApagarRadar);
 
-		JLabel lblNewLabel = new JLabel("Infractores Detectados");
-		lblNewLabel.setBounds(27, 164, 188, 15);
+		JLabel lblNewLabel = new JLabel("Expedientes de Infractores");
+		lblNewLabel.setBounds(27, 126, 268, 15);
 		frameMenu.getContentPane().add(lblNewLabel);
 
 		btnCambioPropietario = new JButton("Cambiar\nPropietario\n");
@@ -177,13 +179,14 @@ public class MenuFuncionarioInterface {
 
 			}
 		});
-		btnCambioPropietario.setBounds(238, 193, 155, 90);
+		btnCambioPropietario.setBounds(393, 309, 178, 90);
 		frameMenu.getContentPane().add(btnCambioPropietario);
 
 		btnSancionar = new JButton("Sancionar \nConductor");
 		btnSancionar.setEnabled(false);
 		btnSancionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int index = listInfractores.getSelectedIndex();
 				Sanction sancion = infracciones.get(index).createSanctionFor(infracciones.get(index).getOwner().getDni());
 				String nombreSancionado = infracciones.get(index).getOwner().getName() + " "
@@ -197,42 +200,40 @@ public class MenuFuncionarioInterface {
 
 				SancionarInterface ventanaCambio = new SancionarInterface(nombreSancionado, vehiculo, localizacion, velocidad, velocidadMax, importe, puntos);
 				ventanaCambio.frmSancionarConductor.setVisible(true);
+				btnPagoSan.setEnabled(true);
 			}
 		});
-		btnSancionar.setBounds(414, 193, 155, 90);
+		btnSancionar.setBounds(22, 309, 178, 90);
 		frameMenu.getContentPane().add(btnSancionar);
 
 		btnPagoSan = new JButton("Pago Sanción");
 		btnPagoSan.setEnabled(false);
 		btnPagoSan.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				JOptionPane.showMessageDialog(null, "Sanción Pagada!");
 			}
 		});
-		btnPagoSan.setBounds(238, 295, 155, 90);
+		btnPagoSan.setBounds(207, 309, 180, 90);
 		frameMenu.getContentPane().add(btnPagoSan);
 
 		JLabel lblCaracteristicasMenu = new JLabel("Control de Mando Funcionario DGT");
-		lblCaracteristicasMenu.setBounds(286, 164, 263, 15);
+		lblCaracteristicasMenu.setBounds(159, 291, 263, 15);
 		frameMenu.getContentPane().add(lblCaracteristicasMenu);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(26, 206, 189, 173);
+		scrollPane.setBounds(22, 153, 549, 130);
 		frameMenu.getContentPane().add(scrollPane);
-
+								
 		listInfractores = new JList();
-
+		scrollPane.setViewportView(listInfractores);
 		listInfractores.setModel(modelLista);
-
 		listInfractores.setEnabled(false);
 		listInfractores.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
-				btnPagoSan.setEnabled(true);
+				btnPagoSan.setEnabled(false);
 				btnSancionar.setEnabled(true);
 				btnCambioPropietario.setEnabled(true);
 			}
 		});
-
-		scrollPane.setViewportView(listInfractores);
 	}
 }

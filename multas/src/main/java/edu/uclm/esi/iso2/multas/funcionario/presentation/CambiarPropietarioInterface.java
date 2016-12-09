@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
 
@@ -19,6 +21,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class CambiarPropietarioInterface {
@@ -89,12 +93,20 @@ public class CambiarPropietarioInterface {
 		txtFieldNuevo.setBounds(192, 84, 223, 19);
 		frmCambiarPropietario.getContentPane().add(txtFieldNuevo);
 		txtFieldNuevo.setColumns(10);
-		
+		txtFieldNuevo.setText(null);
 		btnConfirmar = new JButton("Confirmar");
-		btnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		btnConfirmar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(txtFieldNuevo.getText()==""){
+					JOptionPane.showMessageDialog(null, "Por favor, rellena un nuevo propietario.");
+				}else{
+					JOptionPane.showMessageDialog(null, "Propietario Cambiado Correctamente!");
+					frmCambiarPropietario.dispose();
+				}
 			}
 		});
+	
 		btnConfirmar.setBounds(45, 157, 146, 44);
 		frmCambiarPropietario.getContentPane().add(btnConfirmar);
 		

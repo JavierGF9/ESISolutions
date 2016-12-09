@@ -2,10 +2,13 @@ package edu.uclm.esi.iso2.multas.funcionario.presentation;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SancionarInterface {
 
@@ -24,6 +27,7 @@ public class SancionarInterface {
 	private double velocidadMax;
 	private double importe;
 	private int puntos;
+	private JButton btnSancionar;
 
 	/**
 	 * Create the application.
@@ -105,7 +109,14 @@ public class SancionarInterface {
 		txtFieldPuntos.setColumns(10);
 		txtFieldPuntos.setText(String.valueOf(puntos));
 
-		JButton btnSancionar = new JButton("Sancionar");
+		btnSancionar = new JButton("Sancionar");
+		btnSancionar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "Conductor Sancionado!");
+				frmSancionarConductor.dispose();
+			}
+		});
 		btnSancionar.setBounds(28, 259, 117, 25);
 		frmSancionarConductor.getContentPane().add(btnSancionar);
 
