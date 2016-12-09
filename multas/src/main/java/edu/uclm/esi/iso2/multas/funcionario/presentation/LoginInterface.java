@@ -15,6 +15,8 @@ import java.awt.event.MouseEvent;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 
 public class LoginInterface {
@@ -27,6 +29,8 @@ public class LoginInterface {
 	private JButton btnExit;
 	private JTextField txtFieldUser;
 	private JTextField txtFieldPassword;
+	private JLabel lblNewLabel_1;
+	private JLabel lblNewLabel_2;
 
 	/**
 	 * Launch the application.
@@ -76,7 +80,7 @@ public class LoginInterface {
 		framePrincipal.getContentPane().setLayout(null);
 		
 		lblTitulo = new JLabel("Bienvenido al programa de seguimiento DGT ");
-		lblTitulo.setBounds(55, 0, 318, 15);
+		lblTitulo.setBounds(76, 6, 318, 15);
 		framePrincipal.getContentPane().add(lblTitulo);
 		
 		lblUsuario = new JLabel("Usuario");
@@ -112,5 +116,25 @@ public class LoginInterface {
 			}
 		});
 		framePrincipal.getContentPane().add(btnExit);
+		
+		JLabel lblNewLabel = new JLabel("Ayuda");
+		lblNewLabel.setBounds(362, 150, 61, 16);
+		framePrincipal.getContentPane().add(lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(LoginInterface.class.getResource("/presentacion/Logo-DGT.png")));
+		lblNewLabel_1.setBounds(172, 31, 133, 58);
+		framePrincipal.getContentPane().add(lblNewLabel_1);
+		
+		lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "El usuario es 'esi'\nla contraseña es 'esi'");
+			}
+		});
+		lblNewLabel_2.setIcon(new ImageIcon(LoginInterface.class.getResource("/presentacion/Ayuda.png")));
+		lblNewLabel_2.setBounds(362, 103, 32, 39);
+		framePrincipal.getContentPane().add(lblNewLabel_2);
 	}
 }

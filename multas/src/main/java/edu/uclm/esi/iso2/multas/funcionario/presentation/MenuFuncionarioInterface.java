@@ -1,6 +1,8 @@
 package edu.uclm.esi.iso2.multas.funcionario.presentation;
 import edu.uclm.esi.iso2.multas.domain.*;
 import java.awt.EventQueue;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -11,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,6 +29,8 @@ import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class MenuFuncionarioInterface {
 	private Carretera carretera;
@@ -233,6 +238,7 @@ public class MenuFuncionarioInterface {
 		scrollPane.setViewportView(listInfractores);
 		listInfractores.setModel(modelLista);
 		listInfractores.setEnabled(false);
+		ImageIcon imagen=new ImageIcon("/presentacion/descarga.png");
 		listInfractores.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnPagoSan.setEnabled(false);
@@ -241,4 +247,6 @@ public class MenuFuncionarioInterface {
 			}
 		});
 	}
+
+	
 }

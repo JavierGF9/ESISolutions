@@ -3,7 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.uclm.esi</groupId>
 	<artifactId>MultasConMaven</artifactId>
-	<packaging>war</packaging>
+	
+	
+	<!-- Output to jar format -->
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MultasConMaven Maven Webapp</name>
 	<url>http://webpub.esi.uclm.es</url>
