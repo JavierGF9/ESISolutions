@@ -16,6 +16,15 @@ public class Sanction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	public boolean estaPagada=false;
+	public boolean isEstaPagada() {
+		return estaPagada;
+	}
+
+	public void setEstaPagada(boolean estaPagada) {
+		this.estaPagada = estaPagada;
+	}
+
 	@Column
 	private double amount;
 	@Column

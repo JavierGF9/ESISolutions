@@ -1,5 +1,5 @@
 package edu.uclm.esi.iso2.multas.funcionario.presentation;
-
+import edu.uclm.esi.iso2.multas.domain.*;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JButton;
@@ -43,7 +43,7 @@ public class MenuFuncionarioInterface {
 	private ArrayList<Inquiry> infracciones = new ArrayList<Inquiry>();
 	private DefaultListModel modelLista = new DefaultListModel();
 	private Radar radar;
-
+	private Sanction san=new Sanction();
 	/**
 	 * Launch the application.
 	 */
@@ -97,10 +97,10 @@ public class MenuFuncionarioInterface {
 				radar.encenderRadar();
 				infracciones = radar.generarInfracciones();
 				for (int i = 0; i < infracciones.size(); i++) {
-					modelLista.addElement("Matricula: " + infracciones.get(i).getLicense() + " Nombre: "
+					modelLista.addElement("Matricula: " + infracciones.get(i).getLicense() + " DNI:"
+							+ infracciones.get(i).getOwner().getDni()+" Nombre: "
 							+ infracciones.get(i).getOwner().getName() + " "
-							+ infracciones.get(i).getOwner().getLastName()+ " DNI:"
-							+ infracciones.get(i).getOwner().getDni());
+							+ infracciones.get(i).getOwner().getLastName());
 
 				}
 
@@ -209,8 +209,13 @@ public class MenuFuncionarioInterface {
 		btnPagoSan = new JButton("Pago Sanción");
 		btnPagoSan.setEnabled(false);
 		btnPagoSan.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				if(san.isEstaPagada()==false){
 				JOptionPane.showMessageDialog(null, "Sanción Pagada!");
+				}else{
+					JOptionPane.showMessageDialog(null, "Esta Sancion Ya Está Pagada Anteriormente!");
+				}
 			}
 		});
 		btnPagoSan.setBounds(207, 309, 180, 90);
