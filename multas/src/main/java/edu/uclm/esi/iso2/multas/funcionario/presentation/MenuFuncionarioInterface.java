@@ -1,8 +1,5 @@
 package edu.uclm.esi.iso2.multas.funcionario.presentation;
-import edu.uclm.esi.iso2.multas.domain.*;
 import java.awt.EventQueue;
-import java.awt.Image;
-
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -13,24 +10,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-import edu.uclm.esi.iso2.multas.dao.DriverDao;
-import edu.uclm.esi.iso2.multas.domain.Driver;
 import edu.uclm.esi.iso2.multas.domain.Inquiry;
 import edu.uclm.esi.iso2.multas.domain.Sanction;
 import edu.uclm.esi.iso2.multas.radar.*;
 
 import javax.swing.JScrollPane;
 import javax.swing.event.ListSelectionListener;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 
 public class MenuFuncionarioInterface {
 	private Carretera carretera;
@@ -52,12 +47,15 @@ public class MenuFuncionarioInterface {
 	/**
 	 * Launch the application.
 	 */
+	
+	static final Logger logger = LogManager.getLogger(MenuFuncionarioInterface.class.getName());
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					MenuFuncionarioInterface window = new MenuFuncionarioInterface();
 					window.frameMenu.setVisible(true);
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,6 +66,11 @@ public class MenuFuncionarioInterface {
 	/**
 	 * Create the application.
 	 */
+	public boolean doIt() {
+	    logger.entry();
+	    logger.error("Did it again!");
+	    return logger.exit(false);
+	  }
 	public MenuFuncionarioInterface() {
 		initialize();
 
