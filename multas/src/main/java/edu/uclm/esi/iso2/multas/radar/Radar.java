@@ -37,6 +37,7 @@ public class Radar {
 	
 	public ArrayList<Inquiry> generarInfracciones() {
 		ArrayList<Inquiry> listaInfracciones = new ArrayList<Inquiry>();
+		Inquiry aux;
 		
 		// Si está apagado no hace nada
 		if (!encendido) return listaInfracciones;
@@ -71,7 +72,10 @@ public class Radar {
 			}
 			
 			if (esInfraccion(velocidad)) {
-				listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax));
+				//listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax));
+				aux = new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax);
+				listaInfracciones.add(aux);
+				aux.createSanctionFor(aux.getOwner().getDni());
 			}
 		}
 		
@@ -88,15 +92,4 @@ public class Radar {
 		}
 		return false;
 	}
-	
-	private int getMaxVelocidad() {
-		if (tipoCarretera == Carretera.URBANA) {
-			return 50;
-		} else if (tipoCarretera == Carretera.NACIONAL) {
-			return 100;
-		} else {
-			return 120;
-		}
-	}
-	
 }
