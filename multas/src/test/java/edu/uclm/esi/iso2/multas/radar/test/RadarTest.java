@@ -19,56 +19,62 @@ public class RadarTest {
 
 	@Test
 	public void TestAutovia() {
-	    StatusLogger.getLogger().setLevel(Level.OFF);
+		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
 		Radar r = new Radar(Carretera.AUTOVIA);
 		ArrayList<Inquiry> infracciones = new ArrayList<Inquiry>();
 		infracciones = r.generarInfracciones();
-		
+
 		sessFact.close();
-		
+
 		if (infracciones.size() > 0) {
-			assertTrue(infracciones.get(0).getSpeed() > 120);
+			for (int i = 0; i < infracciones.size(); i++) {
+				assertTrue(infracciones.get(0).getSpeed() > 120);
+			}
 		} else {
 			fail("No se han creado infracciones");
 		}
 	}
-	
+
 	@Test
 	public void TestNacional() {
-	    StatusLogger.getLogger().setLevel(Level.OFF);
+		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
 		Radar r = new Radar(Carretera.NACIONAL);
 		ArrayList<Inquiry> infracciones = new ArrayList<Inquiry>();
 		infracciones = r.generarInfracciones();
-		
+
 		sessFact.close();
-		
+
 		if (infracciones.size() > 0) {
-			assertTrue(infracciones.get(0).getSpeed() > 100);
+			for (int i = 0; i < infracciones.size(); i++) {
+				assertTrue(infracciones.get(0).getSpeed() > 100);
+			}
 		} else {
 			fail("No se han creado infracciones");
 		}
 	}
-	
+
 	@Test
 	public void TestUrbano() {
-	    StatusLogger.getLogger().setLevel(Level.OFF);
+		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
 		Radar r = new Radar(Carretera.URBANA);
 		ArrayList<Inquiry> infracciones = new ArrayList<Inquiry>();
 		infracciones = r.generarInfracciones();
-		
+
 		sessFact.close();
-		
+
 		if (infracciones.size() > 0) {
-			assertTrue(infracciones.get(0).getSpeed() > 50);
+			for (int i = 0; i < infracciones.size(); i++) {
+				assertTrue(infracciones.get(0).getSpeed() > 50);
+			}
 		} else {
 			fail("No se han creado infracciones");
 		}
