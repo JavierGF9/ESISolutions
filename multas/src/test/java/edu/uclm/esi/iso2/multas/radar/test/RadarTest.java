@@ -29,6 +29,7 @@ public class RadarTest {
 
 		sessFact.close();
 
+		//recorremos todo la lista
 		if (infracciones.size() > 0) {
 			for (int i = 0; i < infracciones.size(); i++) {
 				assertTrue(infracciones.get(0).getSpeed() > 120);
@@ -50,6 +51,7 @@ public class RadarTest {
 
 		sessFact.close();
 
+		//recorremos todo la lista
 		if (infracciones.size() > 0) {
 			for (int i = 0; i < infracciones.size(); i++) {
 				assertTrue(infracciones.get(0).getSpeed() > 100);
@@ -71,6 +73,7 @@ public class RadarTest {
 
 		sessFact.close();
 
+		//recorremos todo la lista
 		if (infracciones.size() > 0) {
 			for (int i = 0; i < infracciones.size(); i++) {
 				assertTrue(infracciones.get(0).getSpeed() > 50);
