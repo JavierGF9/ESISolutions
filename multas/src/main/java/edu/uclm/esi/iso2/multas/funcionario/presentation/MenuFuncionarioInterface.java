@@ -34,7 +34,7 @@ public class MenuFuncionarioInterface {
 	private JButton btnEncenderRadar;
 	private JButton btnApagarRadar;
 	private JButton btnCambioPropietario;
-	private JButton btnSancionar;
+	private JButton btnListaInfractores;
 	private JButton btnPagoSan;
 	private JList listInfractores;
 	private JRadioButton rdbtnUrbano;
@@ -157,7 +157,7 @@ public class MenuFuncionarioInterface {
 			public void mouseClicked(MouseEvent e) {
 				btnCambioPropietario.setEnabled(false);
 				btnPagoSan.setEnabled(false);
-				btnSancionar.setEnabled(false);
+				btnListaInfractores.setEnabled(false);
 				btnEncenderRadar.setEnabled(true);
 				btnApagarRadar.setEnabled(false);
 				rdbtnUrbano.setEnabled(true);
@@ -190,13 +190,14 @@ public class MenuFuncionarioInterface {
 		btnCambioPropietario.setBounds(393, 309, 178, 90);
 		frameMenu.getContentPane().add(btnCambioPropietario);
 
-		btnSancionar = new JButton("Sancionar \nConductor");
-		btnSancionar.setEnabled(false);
-		btnSancionar.addActionListener(new ActionListener() {
+		btnListaInfractores = new JButton("Listar\n Infractores\n");
+		btnListaInfractores.setEnabled(false);
+		btnListaInfractores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				ListaInfractoresInterface lii=new ListaInfractoresInterface();
+				lii.frame.setVisible(true);
 				int index = listInfractores.getSelectedIndex();
-				Sanction sancion = infracciones.get(index).createSanctionFor(infracciones.get(index).getOwner().getDni());
+				/*Sanction sancion = infracciones.get(index).createSanctionFor(infracciones.get(index).getOwner().getDni());
 				String nombreSancionado = infracciones.get(index).getOwner().getName() + " "
 						+ infracciones.get(index).getOwner().getLastName();
 				String vehiculo = infracciones.get(index).getLicense();
@@ -207,12 +208,12 @@ public class MenuFuncionarioInterface {
 				int puntos = sancion.getPoints();
 
 				SancionarInterface ventanaCambio = new SancionarInterface(nombreSancionado, vehiculo, localizacion, velocidad, velocidadMax, importe, puntos);
-				ventanaCambio.frmSancionarConductor.setVisible(true);
+				ventanaCambio.frmSancionarConductor.setVisible(true);*/
 				btnPagoSan.setEnabled(true);
 			}
 		});
-		btnSancionar.setBounds(22, 309, 178, 90);
-		frameMenu.getContentPane().add(btnSancionar);
+		btnListaInfractores.setBounds(22, 309, 178, 90);
+		frameMenu.getContentPane().add(btnListaInfractores);
 
 		btnPagoSan = new JButton("Pago Sanción");
 		btnPagoSan.setEnabled(false);
@@ -245,7 +246,7 @@ public class MenuFuncionarioInterface {
 		listInfractores.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnPagoSan.setEnabled(false);
-				btnSancionar.setEnabled(true);
+				btnListaInfractores.setEnabled(true);
 				btnCambioPropietario.setEnabled(true);
 			}
 		});
