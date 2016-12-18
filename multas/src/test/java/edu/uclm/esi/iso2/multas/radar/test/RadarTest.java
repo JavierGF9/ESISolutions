@@ -1,6 +1,5 @@
 package edu.uclm.esi.iso2.multas.radar.test;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
@@ -29,13 +28,15 @@ public class RadarTest {
 
 		sessFact.close();
 
-		//recorremos todo la lista
+		// recorremos todo la lista
 		if (infracciones.size() > 0) {
-			for (int i = 0; i < infracciones.size(); i++) {
-				assertTrue(infracciones.get(0).getSpeed() > 120);
+			for (Inquiry i: infracciones) {
+				if (i.getSpeed() <= i.getMaxSpeed()) {
+					fail("Se han creado infracciones falsas");
+				}
 			}
 		} else {
-			fail("No se han creado infracciones");
+			System.out.println("No se han creado infracciones");
 		}
 	}
 
@@ -51,13 +52,15 @@ public class RadarTest {
 
 		sessFact.close();
 
-		//recorremos todo la lista
+		// recorremos todo la lista
 		if (infracciones.size() > 0) {
-			for (int i = 0; i < infracciones.size(); i++) {
-				assertTrue(infracciones.get(0).getSpeed() > 100);
+			for (Inquiry i: infracciones) {
+				if (i.getSpeed() <= i.getMaxSpeed()) {
+					fail("Se han creado infracciones falsas");
+				}
 			}
 		} else {
-			fail("No se han creado infracciones");
+			System.out.println("No se han creado infracciones");
 		}
 	}
 
@@ -73,13 +76,15 @@ public class RadarTest {
 
 		sessFact.close();
 
-		//recorremos todo la lista
+		// recorremos todo la lista
 		if (infracciones.size() > 0) {
-			for (int i = 0; i < infracciones.size(); i++) {
-				assertTrue(infracciones.get(0).getSpeed() > 50);
+			for (Inquiry i: infracciones) {
+				if (i.getSpeed() <= i.getMaxSpeed()) {
+					fail("Se han creado infracciones falsas");
+				}
 			}
 		} else {
-			fail("No se han creado infracciones");
+			System.out.println("No se han creado infracciones");
 		}
 	}
 }

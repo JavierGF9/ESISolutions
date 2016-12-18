@@ -1,7 +1,5 @@
 package edu.uclm.esi.iso2.multas.domain.test;
 
-import static org.junit.Assert.*;
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.hibernate.Session;
@@ -17,12 +15,13 @@ public class DriverTest {
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
-		//Creacion de la clase
-		//Driver d= new Driver(String dni, String name, String lastName, String fullAddress)
-		
-		sessFact.close();
-		
-		//comprobamos que si los puntos pasan de 12 o bajan de 0, éstos sean los valores máximos
-	}
+		// Creacion de la clase
+		// Driver d= new Driver(String dni, String name, String lastName, String
+		// fullAddress)
 
+		sessFact.close();
+
+		// comprobamos que si los puntos pasan de 12 o bajan de 0, éstos sean
+		// los valores máximos
+	}
 }
