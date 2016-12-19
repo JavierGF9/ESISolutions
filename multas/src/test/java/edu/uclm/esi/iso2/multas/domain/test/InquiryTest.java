@@ -1,64 +1,45 @@
 package edu.uclm.esi.iso2.multas.domain.test;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.status.StatusLogger;
 import org.hibernate.Session;
 import org.junit.Test;
 
 import edu.uclm.esi.iso2.multas.dao.HibernateFactory;
+import edu.uclm.esi.iso2.multas.domain.Inquiry;
+import edu.uclm.esi.iso2.multas.domain.Sanction;
+import edu.uclm.esi.iso2.multas.radar.Carretera;
 
 public class InquiryTest {
 
 	@Test
 	public void testPuntos30() {
-
 		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
-		// Creacion de la clase//
-		// Inquiry i= new Inquiry(String license, double speed, String location,
-		// double maxSpeed)
-
+		Inquiry i = new Inquiry("0100", 70.0, Carretera.URBANA.name(), 30.0);
+		Sanction s = i.createSanctionFor(i.getOwner().getDni());
+		
 		sessFact.close();
-
-		// Comprobar que entre en el if de velocidad maxima 30
-
-	}
-
-	@Test
-	public void testPuntos40() {
-
-		StatusLogger.getLogger().setLevel(Level.OFF);
-		HibernateFactory.buildIfNeeded();
-		Session sessFact = HibernateFactory.getSessionFactory().openSession();
-
-		// Creacion de la clase
-		// Inquiry i= new Inquiry(String license, double speed, String location,
-		// double maxSpeed)
-
-		sessFact.close();
-
-		// Comprobar que entre en el if de velocidad maxima 40
-
+		
+		assertTrue(s.getAmount() == 600);
+		fail("La cantidad no es la que debería ser");
 	}
 
 	@Test
 	public void testPuntos50() {
-
-		// ***En este debía fallar***//
 		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
 		Session sessFact = HibernateFactory.getSessionFactory().openSession();
 
-		// Creacion de la clase
-		// Inquiry i= new Inquiry(String license, double speed, String location,
-		// double maxSpeed)
-
+		Inquiry i = new Inquiry("0100", 70.0, Carretera.URBANA.name(), 50.0);
+		Sanction s = i.createSanctionFor(i.getOwner().getDni());
+		
 		sessFact.close();
-
-		// Comprobar que entre en el if de velocidad maxima 50
-
 	}
 
 	@Test
