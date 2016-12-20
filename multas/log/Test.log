@@ -1,0 +1,65 @@
+2016-12-20 12:51:26,431 [AWT-EventQueue-0] INFO  Version:45 - HHH000412: Hibernate Core {5.2.2.Final}
+2016-12-20 12:51:26,434 [AWT-EventQueue-0] INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-12-20 12:51:26,435 [AWT-EventQueue-0] INFO  Environment:318 - HHH000021: Bytecode provider name : javassist
+2016-12-20 12:51:26,447 [AWT-EventQueue-0] WARN  deprecation:91 - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-12-20 12:51:26,655 [AWT-EventQueue-0] INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-12-20 12:51:26,725 [AWT-EventQueue-0] WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-12-20 12:51:26,729 [AWT-EventQueue-0] INFO  pooling:126 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://127.0.0.1:3306/multas]
+2016-12-20 12:51:26,729 [AWT-EventQueue-0] INFO  pooling:135 - HHH10001001: Connection properties: {user=root, password=****}
+2016-12-20 12:51:26,730 [AWT-EventQueue-0] INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2016-12-20 12:51:26,733 [AWT-EventQueue-0] INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-12-20 12:51:26,974 [AWT-EventQueue-0] INFO  Dialect:153 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-20 12:51:27,008 [AWT-EventQueue-0] INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-12-20 12:51:27,169 [AWT-EventQueue-0] INFO  TableGenerator:468 - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2016-12-20 12:51:27,557 [AWT-EventQueue-0] INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@709c311] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2016-12-20 12:51:27,779 [AWT-EventQueue-0] INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-12-20 12:51:27,840 [AWT-EventQueue-0] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 60 in HQL: [from edu.uclm.esi.iso2.multas.domain.Vehicle where license=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2016-12-20 12:51:27,944 [AWT-EventQueue-0] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 55 in HQL: [from edu.uclm.esi.iso2.multas.domain.Driver where dni=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2016-12-20 12:54:42,130 [AWT-EventQueue-0] INFO  Version:45 - HHH000412: Hibernate Core {5.2.2.Final}
+2016-12-20 12:54:42,134 [AWT-EventQueue-0] INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-12-20 12:54:42,135 [AWT-EventQueue-0] INFO  Environment:318 - HHH000021: Bytecode provider name : javassist
+2016-12-20 12:54:42,146 [AWT-EventQueue-0] WARN  deprecation:91 - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-12-20 12:54:42,344 [AWT-EventQueue-0] INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-12-20 12:54:42,413 [AWT-EventQueue-0] WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-12-20 12:54:42,417 [AWT-EventQueue-0] INFO  pooling:126 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://127.0.0.1:3306/multas]
+2016-12-20 12:54:42,418 [AWT-EventQueue-0] INFO  pooling:135 - HHH10001001: Connection properties: {user=root, password=****}
+2016-12-20 12:54:42,419 [AWT-EventQueue-0] INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2016-12-20 12:54:42,423 [AWT-EventQueue-0] INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-12-20 12:54:42,650 [AWT-EventQueue-0] INFO  Dialect:153 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-20 12:54:42,682 [AWT-EventQueue-0] INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-12-20 12:54:42,847 [AWT-EventQueue-0] INFO  TableGenerator:468 - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2016-12-20 12:54:43,146 [AWT-EventQueue-0] INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@25513c52] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2016-12-20 12:54:43,404 [AWT-EventQueue-0] INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-12-20 12:54:43,462 [AWT-EventQueue-0] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 60 in HQL: [from edu.uclm.esi.iso2.multas.domain.Vehicle where license=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2016-12-20 12:54:43,547 [AWT-EventQueue-0] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 55 in HQL: [from edu.uclm.esi.iso2.multas.domain.Driver where dni=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2016-12-20 13:07:21,921 [main] INFO  Version:45 - HHH000412: Hibernate Core {5.2.2.Final}
+2016-12-20 13:07:21,933 [main] INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-12-20 13:07:21,936 [main] INFO  Environment:318 - HHH000021: Bytecode provider name : javassist
+2016-12-20 13:07:21,987 [main] WARN  deprecation:91 - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-12-20 13:07:22,246 [main] INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-12-20 13:07:22,448 [main] WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-12-20 13:07:22,454 [main] INFO  pooling:126 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://alarcosj.esi.uclm.es:3306/multas]
+2016-12-20 13:07:22,455 [main] INFO  pooling:135 - HHH10001001: Connection properties: {user=iso2, password=****}
+2016-12-20 13:07:22,455 [main] INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2016-12-20 13:07:22,460 [main] INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-12-20 13:07:35,126 [main] INFO  Dialect:153 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-20 13:07:35,188 [main] INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-12-20 13:07:35,606 [main] INFO  TableGenerator:468 - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2016-12-20 13:07:36,242 [main] INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@18a9b994] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2016-12-20 13:08:36,560 [main] INFO  Version:45 - HHH000412: Hibernate Core {5.2.2.Final}
+2016-12-20 13:08:36,571 [main] INFO  Environment:213 - HHH000206: hibernate.properties not found
+2016-12-20 13:08:36,574 [main] INFO  Environment:318 - HHH000021: Bytecode provider name : javassist
+2016-12-20 13:08:36,613 [main] WARN  deprecation:91 - HHH90000012: Recognized obsolete hibernate namespace http://hibernate.sourceforge.net/hibernate-configuration. Use namespace http://www.hibernate.org/dtd/hibernate-configuration instead.  Support for obsolete DTD/XSD namespaces may be removed at any time.
+2016-12-20 13:08:36,888 [main] INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2016-12-20 13:08:37,111 [main] WARN  pooling:70 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2016-12-20 13:08:37,116 [main] INFO  pooling:126 - HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://127.0.0.1:3306/multas]
+2016-12-20 13:08:37,117 [main] INFO  pooling:135 - HHH10001001: Connection properties: {user=root, password=****}
+2016-12-20 13:08:37,118 [main] INFO  pooling:140 - HHH10001003: Autocommit mode: false
+2016-12-20 13:08:37,122 [main] INFO  DriverManagerConnectionProviderImpl:41 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2016-12-20 13:08:37,522 [main] INFO  Dialect:153 - HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2016-12-20 13:08:37,575 [main] INFO  LobCreatorBuilderImpl:98 - HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
+2016-12-20 13:08:37,961 [main] INFO  TableGenerator:468 - HHH000398: Explicit segment value for id generator [hibernate_sequences.sequence_name] suggested; using default [default]
+2016-12-20 13:08:38,637 [main] INFO  access:48 - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6da42046] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2016-12-20 13:08:38,958 [main] INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2016-12-20 13:08:39,122 [main] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 60 in HQL: [from edu.uclm.esi.iso2.multas.domain.Vehicle where license=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
+2016-12-20 13:08:39,254 [main] WARN  HqlSqlWalker:1063 - [DEPRECATION] Encountered positional parameter near line 1, column 55 in HQL: [from edu.uclm.esi.iso2.multas.domain.Driver where dni=?].  Positional parameter are considered deprecated; use named parameters or JPA-style positional parameters instead.
