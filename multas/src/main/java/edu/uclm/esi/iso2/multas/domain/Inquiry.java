@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NoResultException;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +22,7 @@ import edu.uclm.esi.iso2.multas.dao.OwnerDao;
 @Table
 public class Inquiry {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String license;
 	@Column(nullable=false, updatable=false)
@@ -61,13 +63,36 @@ public class Inquiry {
 		int points=calculatePoints();
 		int amount=calculateAmount();
 		Sanction sanction=new Sanction();
+		
 		DriverDao dao=new DriverDao();
-		Driver driver=dao.findByDni(dni);
+		Driver driver;
+		
+		/* Correctivo para cuando el driver no está en la BBDD */
+		try {
+			driver=dao.findByDni(dni);
+		} catch (NoResultException e) {
+			driver = new Driver();
+			driver.setId(owner.getId());
+			driver.setDni(owner.getDni());
+			driver.setFullAddress(owner.getFullAddress());
+			driver.setLastName(owner.getLastName());
+			driver.setName(owner.getName());
+		}
+		
+		/* Realizar el restado de puntos */
+		driver.setPoints(driver.getPoints() - points);
+
 		sanction.setSanctionHolder(driver);
 		sanction.setPoints(points);
 		sanction.setAmount(amount);
+		
 		GeneralDao<Sanction> daoSanction=new GeneralDao<>();
 		daoSanction.insert(sanction);
+		
+		/* Guardar el Inquiry en la base de datos */
+		GeneralDao<Inquiry> inquirydao = new GeneralDao<Inquiry>();
+		inquirydao.insert(this);
+		
 		return sanction;
 	}
 	public String getLicense(){

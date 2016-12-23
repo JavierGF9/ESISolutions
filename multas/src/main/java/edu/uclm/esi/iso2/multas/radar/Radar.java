@@ -74,8 +74,10 @@ public class Radar {
 			if (esInfraccion(velocidad)) {
 				//listaInfracciones.add(new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax));
 				aux = new Inquiry(id, velocidad, tipoCarretera.name(), velocidadMax);
-				listaInfracciones.add(aux);
+				System.err.println(aux.getOwner().getDni());
+				System.err.flush();
 				aux.createSanctionFor(aux.getOwner().getDni());
+				listaInfracciones.add(aux);
 			}
 		}
 		
