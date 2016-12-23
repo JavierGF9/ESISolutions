@@ -19,6 +19,7 @@ import edu.uclm.esi.iso2.multas.radar.Carretera;
 
 public class InquiryTest {
 
+	@Test
 	public void testAmount30() {
 		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
@@ -32,6 +33,7 @@ public class InquiryTest {
 		assertTrue(s.getAmount() == 600);
 	}
 
+	@Test
 	public void testPuntos50() {
 		StatusLogger.getLogger().setLevel(Level.OFF);
 		HibernateFactory.buildIfNeeded();
@@ -45,6 +47,7 @@ public class InquiryTest {
 		assertTrue(s.getPoints() == 0);
 	}
 
+	@Test
 	public void testAmount50() {
 
 		StatusLogger.getLogger().setLevel(Level.OFF);

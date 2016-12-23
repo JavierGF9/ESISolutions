@@ -2,17 +2,13 @@ package edu.uclm.esi.iso2.multas.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import edu.uclm.esi.iso2.multas.dao.GeneralDao;
 
 @Entity
 @Table
@@ -95,8 +91,6 @@ public class Sanction {
 	public void pay() {
 		this.dateOfPayment=new Date(System.currentTimeMillis());
 		setEstaPagada(true);
-		GeneralDao<Sanction> daoSanction=new GeneralDao<>();
-		daoSanction.update(this);
 	}
 
 	@Override
