@@ -97,11 +97,6 @@ public class InquiryTest {
 		assertTrue(s.getAmount() == 300);	// Comprueba que la multa es de 300€
 		assertEquals(s.getSanctionHolder().getDni(), "5000438");	// Comprueba que el DNI es de 5001400
 		
-		d = dao.findByDni("5000438");
-		int puntosFinales = d.getPoints();
-		
-		assertTrue(puntosOriginales - puntosFinales == 2);
-		
 		// Ahora comprueba que está pagada
 		s.pay();
 		assertTrue(s.isEstaPagada());
